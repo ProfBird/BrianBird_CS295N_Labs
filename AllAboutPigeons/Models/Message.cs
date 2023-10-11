@@ -6,5 +6,6 @@
         public AppUser From { get; set; }
         public string Text {  get; set; }
         public DateOnly Date {  get; set; }
+        public int Rating { get; set; }
     }
 }

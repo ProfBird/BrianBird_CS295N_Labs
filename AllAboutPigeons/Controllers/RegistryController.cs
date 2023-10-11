@@ -17,7 +17,11 @@ namespace AllAboutPigeons.Controllers
 
         [HttpPost]
         public IActionResult ForumPost(Message model)
-        { 
+        {
+            model.Date = DateOnly.FromDateTime(DateTime.Now);
+            // Temporarily add a random rating to the post
+            Random random = new Random();
+            model.Rating = random.Next(0, 10);
             return View("Index", model); 
         }
 
