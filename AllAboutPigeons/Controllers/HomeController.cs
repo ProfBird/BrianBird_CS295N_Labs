@@ -18,6 +18,16 @@ namespace AllAboutPigeons.Controllers
             return View();
         }
 
+        public IActionResult Overview()
+        {
+            return View();
+        }
+
+        public IActionResult Reference()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
