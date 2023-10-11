@@ -2,14 +2,22 @@
 @{
     ViewData["Title"] = "Forum Post";
 }
+@* Temporary embedded style *@
+@* Yes, I know this doesn't belong here, but it works. *@
+<style>
+    form { width: 300px;}
+    input {float: right;}
+    br {clear: right;}
+</style>
+
 <h1>Forum Post</h1>
 <form method="Post">
-    <label for="to">To</label>
+    <label for="to">To:</label>
     <input id="to" name="To.Name"><br>
-    <label for="from">From</label>
+    <label for="from">From:</label>
     <input id="from" name="From.Name"><br>
-    <label for="message">Message</label>
-    <input id="message" name="Text"><br>
-    <input type="submit">
+    <label for="message">Message:</label>
+    <input id="message" name="Text"><br><br/>
+    <input type="submit"><br/>
 </form>
 

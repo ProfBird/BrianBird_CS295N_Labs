@@ -5,22 +5,32 @@
 
 
 <h1>Pigeon Registry</h1>
+<p>
+    Members can list their pigeons here by breed and color.
+    The registry will be searchable by breed, color, owner and band number.
+</p>
+<p>
 <a href="ForumPost">Enter a new post</a>
-
+</p>
 <h2>Forum Post</h2>
+Members can also offer birds for sale or report missing or found birds.
 @if (@Model != null)
 {
-    <p>
-
-        To: @Model.To.Name
-        <br />
-        From: @Model.From.Name
-        <br />
-        Message: @Model.Text
-        <br />
-        Date: @Model.Date
-        <br>
-        Rating: @Model.Rating
-<br />
-    </p>
+    <table>
+        <tr>
+            <td style="width:5em;">To: </td><td>@Model.To.Name</td>
+        </tr>
+        <tr>
+            <td>From: </td> <td>@Model.From.Name</td>
+        </tr>
+        <tr>
+            <td>Message: </td> <td>@Model.Text</td>
+        </tr>
+        <tr>
+            <td>Date: </td> <td>@Model.Date</td>
+        </tr>
+        <tr>
+        <td>Rating: </td> <td>@Model.Rating</td>
+        </tr>
+    </table>
 }
