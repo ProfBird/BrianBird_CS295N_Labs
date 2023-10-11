@@ -1,8 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Message
 @{
     ViewData["Title"] = "Pigeon Registry";
 }
 
+
 <h1>Pigeon Registry</h1>
+<a href="ForumPost">Enter a new post</a>
+
+<h2>Forum Post</h2>
+@if (@Model != null)
+{
+    <p>
+
+        To: @Model.To
+        <br />
+        From: @Model.From
+        <br />
+        Message: @Model.Text
+        <br />
+        Date: @Model.Date
+<br />
+    </p>
+}

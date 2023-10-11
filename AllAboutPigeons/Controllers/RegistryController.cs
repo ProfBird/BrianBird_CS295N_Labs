@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AllAboutPigeons.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AllAboutPigeons.Controllers
 {
@@ -7,6 +8,17 @@ namespace AllAboutPigeons.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult ForumPost() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ForumPost(Message model)
+        { 
+            return View("Index", model); 
         }
 
         public IActionResult Info()
