@@ -2,7 +2,7 @@
 
 namespace AllAboutPigeons.Controllers
 {
-    public class DemoController : Controller
+    public class EventsController : Controller
     {
         public IActionResult Index()
         {
