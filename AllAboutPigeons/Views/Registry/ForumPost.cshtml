@@ -3,6 +3,9 @@
     ViewData["Title"] = "Forum Post";
 }
 <p style="width:768px; background-color:blue;">This is 768 pixels</p>
+<div class="container">
+    <p class="bg-info row col-12">This is a 12 column row</p>
+</div>
 <h1>Forum Post</h1>
 <form method="Post" class="container">
     <div class="row col-10 p-2">
@@ -10,15 +13,15 @@
         <input id="to" name="To.Name" class="col-md-8 form-control">
     </div>
     <div class="row col-10 p-2">
-        <label for="from" class="col-md-2">From:</label>
-        <input id="from" name="From.Name" class="col-md-8">
+        <label for="from" class="col-md-2 form-label">From:</label>
+        <input id="from" name="From.Name" class="col-md-8 form-control">
     </div>
     <div class="row col-10 p-2">
-        <label for="message" class="col-md-2">Message:</label>
-        <input id="message" name="Text" class="col-md-8">
+        <label for="message" class="col-md-2 form-label">Message:</label>
+        <input id="message" name="Text" class="col-md-8 form-control">
     </div>
     <div class="row col-10 p-2">
-        <input type="submit"class="col-md-2"><br />
+        <input type="submit" class="col-md-2"><br />
     </div>
 </form>
 
