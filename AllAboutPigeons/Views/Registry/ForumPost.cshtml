@@ -2,26 +2,30 @@
 @{
     ViewData["Title"] = "Forum Post";
 }
-<p style="width:768px; background-color:blue;">This is 768 pixels</p>
-<div class="container">
-    <p class="bg-info row col-12">This is a 12 column row</p>
-</div>
+
 <h1>Forum Post</h1>
 <form method="Post" class="container">
     <div class="row col-10 p-2">
-        <label for="to" class="col-md-2 form-label">To:</label>
-        <input id="to" name="To.Name" class="col-md-8 form-control">
+        @* row width is 10 out of 12 columns, with 8px padding *@
+        <label for="to" class="col-md-2 col-form-label">To</label>  @* md breakpoint is 768px *@
+        <div class="col-md-8">
+            <input id="to" name="To.Name" class="form-control">
+        </div>
     </div>
     <div class="row col-10 p-2">
-        <label for="from" class="col-md-2 form-label">From:</label>
-        <input id="from" name="From.Name" class="col-md-8 form-control">
+        <label for="from" class="col-md-2 form-label">From</label>
+        <div class="col-md-8">
+            <input id="from" name="From.Name" class="form-control">
+        </div>
     </div>
     <div class="row col-10 p-2">
         <label for="message" class="col-md-2 form-label">Message:</label>
-        <input id="message" name="Text" class="col-md-8 form-control">
+        <div class="col-md-8">
+            <input id="message" name="Text" class="col-md-8 form-control">
+        </div>
     </div>
     <div class="row col-10 p-2">
-        <input type="submit" class="col-md-2"><br />
+        <input type="submit" class="col-md-2" value="Submit"><br />
     </div>
 </form>
 
