@@ -11,7 +11,7 @@ namespace PigeonTests
         {
             // Arrange
             var controller = new QuizController();
-            var model = new Tests();
+            var model = new QuizQuestions();
 
             // Act
             var loadedModel = controller.LoadQuestions(model);

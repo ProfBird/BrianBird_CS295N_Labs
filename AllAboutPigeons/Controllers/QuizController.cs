@@ -14,7 +14,7 @@ namespace AllAboutPigeons.Controllers
             return View();
         }
 
-        public Tests LoadQuestions(Tests model)
+        public QuizQuestions LoadQuestions(QuizQuestions model)
         {
             // Temporary set of hard-coded questions
             // In the future we'll read these from a file.
