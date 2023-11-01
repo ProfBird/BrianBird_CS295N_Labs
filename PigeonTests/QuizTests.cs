@@ -17,12 +17,35 @@ namespace PigeonTests
             var loadedModel = controller.LoadQuestions(model);
 
             // Assert
-            Assert.Equal(controller.Questions, loadedModel.Questions);
-            Assert.Equal(controller.Answers, loadedModel.Answers);
             Assert.NotNull(loadedModel.Questions);
             Assert.NotNull(loadedModel.Answers);
-            Assert.NotNull(controller.Questions);
-            Assert.NotNull(controller.Answers);
+            Assert.NotEmpty(loadedModel.Questions);
+            Assert.NotEmpty(loadedModel.Answers); Assert.Equal(controller.Questions, loadedModel.Questions);
+            Assert.Equal(controller.Answers, loadedModel.Answers);
+            Assert.Equal(loadedModel.Questions.Count, loadedModel.Answers.Count);
+        }
+
+        [Fact]
+        public void TestCheckQuizAnswers()
+        {
+            // Arrange
+            // create model, put in some right and wrong answer
+            var model = new QuizQuestions();
+            var controller = new QuizController();
+            var loadedModel = controller.LoadQuestions(model);
+            loadedModel.UserAnswers[1] = "No";  // true
+            loadedModel.UserAnswers[2] = "Yes"; // false
+            loadedModel.UserAnswers[3] = ""; // no answer, false
+
+            // Act
+            var result = controller.checkQuizAnswers(model);
+            // Assert
+            // user's right answers are shown to be right
+            Assert.True(result[1]);
+
+            // user's wrong answer are shown to be wrong
+            Assert.False(result[2]);
+            Assert.False(result[3]);
         }
     }
 }
