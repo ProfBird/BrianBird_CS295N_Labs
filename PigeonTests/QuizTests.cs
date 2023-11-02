@@ -41,11 +41,11 @@ namespace PigeonTests
             var result = controller.checkQuizAnswers(model);
             // Assert
             // user's right answers are shown to be right
-            Assert.True(result[1]);
+            Assert.True(result.Results[1]);
 
             // user's wrong answer are shown to be wrong
-            Assert.False(result[2]);
-            Assert.False(result[3]);
+            Assert.False(result.Results[2]);
+            Assert.False(result.Results[3]);
         }
     }
 }

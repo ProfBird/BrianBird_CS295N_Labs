@@ -1,6 +1,5 @@
 ﻿using AllAboutPigeons.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography.X509Certificates;
 
 namespace AllAboutPigeons.Controllers
 {
@@ -15,11 +14,11 @@ namespace AllAboutPigeons.Controllers
             // In the future we'll read these from a file.
             Questions = new Dictionary<int, String>();
             Answers = new Dictionary<int, String>();
-            Questions[1] = "Are all pigeons homing pigeons?";
+            Questions[1] = "Are all pigeons homing pigeons? (Yes or No)";
             Answers[1] = "No";
-            Questions[2] = "Are all pigeons secretly government spies?";
-            Answers[2] = "Only Some";
-            Questions[3] = "Where do pigeons sleep";
+            Questions[2] = "Are all pigeons secretly government spies? (Yes, No, Some)";
+            Answers[2] = "Some";
+            Questions[3] = "Where do pigeons sleep (Name an official building)";
             Answers[3] = "The Pentagon";
         }
 
@@ -34,16 +33,21 @@ namespace AllAboutPigeons.Controllers
         { 
             var model = LoadQuestions(new QuizQuestions());
             model.UserAnswers[1] = answer1;
-            return View(model);
+            model.UserAnswers[2] = answer2;
+            model.UserAnswers[3] = answer3;
+            // Check the user's answers
+            var checkedModel = checkQuizAnswers(model);
+            return View(checkedModel);
         }
 
         public QuizQuestions LoadQuestions(QuizQuestions model)
         {
-            // TODO: load questions and answers
-            // into the model
+            // load questions and answers into the model
             model.Questions = Questions;
             model.Answers = Answers;
+            // TODO: Should these objects be created in the model?
             model.UserAnswers = new Dictionary<int, string>();
+            model.Results = new Dictionary<int, bool>();
             // create empty entries for each question
             foreach (var question in Questions)
             {
@@ -54,15 +58,14 @@ namespace AllAboutPigeons.Controllers
             return model;
         }
 
-        public Dictionary<int, bool> checkQuizAnswers(QuizQuestions model) 
+        public QuizQuestions checkQuizAnswers(QuizQuestions model) 
         { 
-            var result = new Dictionary<int, bool>();
             foreach (var question in Questions) 
             {
                 int key = question.Key;
-                result[key] = model.Answers[key] == model.UserAnswers[key];
+                model.Results[key] = model.Answers[key] == model.UserAnswers[key];
             }
-            return result;
+            return model;
         }
     }
 }

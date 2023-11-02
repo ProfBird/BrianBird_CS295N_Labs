@@ -2,10 +2,16 @@
 
 <form method="post">
     @Model.Questions[1]<br />
-    <input name="answer1"/><br />
+    <input name="answer1" value="@Model.UserAnswers[1]"/> 
+    @( (Model.UserAnswers[1] == "") ? "" : Model.Results[1] ? "Right" : "Wrong")
+    <br />
     @Model.Questions[2]<br />
-    <input /><br />
+    <input name="answer2" value="@Model.UserAnswers[2]" />
+    @((Model.UserAnswers[2] == "") ? "" : Model.Results[2] ? "Right" : "Wrong")
+    <br />
     @Model.Questions[3]<br />
-    <input /><br />
+    <input name="answer3" value="@Model.UserAnswers[3]" />
+    @((Model.UserAnswers[3] == "") ? "" : Model.Results[3] ? "Right" : "Wrong")
+    <br />
     <input type="submit" />
 </form>
