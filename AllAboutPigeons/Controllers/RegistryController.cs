@@ -46,7 +46,7 @@ namespace AllAboutPigeons.Controllers
             return RedirectToAction("Index", new { model.MessageId });
         }
 
-        public IActionResult Info()
+            public IActionResult Info()
         {
             return View();
         }
