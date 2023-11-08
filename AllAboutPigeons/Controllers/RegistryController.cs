@@ -11,18 +11,16 @@ namespace AllAboutPigeons.Controllers
         public RegistryController(AppDbContext c) {
             context = c;
         }
-
-        // TODO: Do something interesting with the messageId
+        
         public IActionResult Index(string messageId)
         {
-            // Get the last post out of the database
+            // Show all the posts in the database
+            // TODO: Limit the posts shown to some practical number
             var model = context.Messages
                 .Include(m => m.To)
                 .Include(m => m.From)
                 .ToList();
-               // .Where(m => m.MessageId == int.Parse(messageId))
-               // .FirstOrDefault();
-               // .Find(int.Parse(messageId));
+            ViewBag.LatestId = messageId;
             return View(model);
         }
 

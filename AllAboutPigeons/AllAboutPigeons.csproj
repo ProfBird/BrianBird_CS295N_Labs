@@ -14,4 +14,9 @@
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20231108164132_Initial.cs" />
+    <Compile Remove="Migrations\20231108164132_Initial.Designer.cs" />
+  </ItemGroup>
 </Project>

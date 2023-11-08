@@ -1,47 +1,52 @@
-﻿@model List<Message>
+﻿ @model List<Message>
 @{
     ViewData["Title"] = "Pigeon Registry";
+    int messageId = int.Parse(ViewBag.LatestId ?? "0");
 }
+@* TODO: Use Bootstrap for styling *@
+ <style>
+     table * {
+        border: solid;
+     }
+     
+     td {
+       padding: 5px;
+     }
+     
+     th {
+       font-weight: bold;
+     }
+ </style>
 
-
-<h1>Pigeon Registry</h1>
+ <h1>Pigeon Registry</h1>
 <p>
     Members can list their pigeons here by breed and color.
     The registry will be searchable by breed, color, owner and band number.
 </p>
 <p>
-<a href="ForumPost">Enter a new post</a>
+<a href="Registry/ForumPost">Enter a new post</a>
 </p>
 <h2>Forum Post</h2>
-Members can also offer birds for sale or report missing or found birds.
-@if (@Model != null)
-{
-    @*
-    <table>
-        <tr>
-            <td style="width:5em;">To: </td><td>@Model.To.Name</td>
-        </tr>
-        <tr>
-            <td>From: </td> <td>@Model.From.Name</td>
-        </tr>
-        <tr>
-            <td>Message: </td> <td>@Model.Text</td>
-        </tr>
-        <tr>
-            <td>Date: </td> <td>@Model.Date</td>
-        </tr>
-        <tr>
-        <td>Rating: </td> <td>@Model.Rating</td>
-        </tr>
-    </table>
-    *@
+ <p>Members can also offer birds for sale or report missing or found birds.</p>
+<table>
+    <thead>
+        <th>Date</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Message</th>
+        <th>Rating</th>
+    </thead>
+
     @foreach(var message in Model)
     {
-        <p>
-            From: @message.From.Name <br>
-            To: @message.To.Name <br>
-            Message: @message.Text <br>
-            Date: @message.Date 
-        </p>
+        @* Highlight the message just sent *@
+        <tr style='@(message.MessageId == messageId ? "background-color: yellow;" : "")'>
+            <td>@message.Date</td>
+            <td>@message.From.Name</td>
+            <td>@message.To.Name</td>
+            <td>@message.Text</td>
+            <td>@message.Rating</td>
+        </tr>
     }
-}
+    
+</table>
