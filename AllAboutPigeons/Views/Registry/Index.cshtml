@@ -1,4 +1,4 @@
-﻿@model Message
+﻿@model List<Message>
 @{
     ViewData["Title"] = "Pigeon Registry";
 }
@@ -16,6 +16,7 @@
 Members can also offer birds for sale or report missing or found birds.
 @if (@Model != null)
 {
+    @*
     <table>
         <tr>
             <td style="width:5em;">To: </td><td>@Model.To.Name</td>
@@ -33,4 +34,14 @@ Members can also offer birds for sale or report missing or found birds.
         <td>Rating: </td> <td>@Model.Rating</td>
         </tr>
     </table>
+    *@
+    @foreach(var message in Model)
+    {
+        <p>
+            From: @message.From.Name <br>
+            To: @message.To.Name <br>
+            Message: @message.Text <br>
+            Date: @message.Date 
+        </p>
+    }
 }

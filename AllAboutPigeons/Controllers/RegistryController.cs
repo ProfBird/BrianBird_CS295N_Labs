@@ -1,13 +1,29 @@
-﻿using AllAboutPigeons.Models;
+﻿using AllAboutPigeons.Data;
+using AllAboutPigeons.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AllAboutPigeons.Controllers
 {
     public class RegistryController : Controller
     {
-        public IActionResult Index()
+        AppDbContext context;
+        public RegistryController(AppDbContext c) {
+            context = c;
+        }
+
+        // TODO: Do something interesting with the messageId
+        public IActionResult Index(string messageId)
         {
-            return View();
+            // Get the last post out of the database
+            var model = context.Messages
+                .Include(m => m.To)
+                .Include(m => m.From)
+                .ToList();
+               // .Where(m => m.MessageId == int.Parse(messageId))
+               // .FirstOrDefault();
+               // .Find(int.Parse(messageId));
+            return View(model);
         }
 
         public IActionResult ForumPost() 
@@ -22,7 +38,12 @@ namespace AllAboutPigeons.Controllers
             // Temporarily add a random rating to the post
             Random random = new Random();
             model.Rating = random.Next(0, 10);
-            return View("Index", model); 
+
+            // Save model to db
+            context.Messages.Add(model);
+            context.SaveChanges();
+
+            return RedirectToAction("Index", new { model.MessageId });
         }
 
         public IActionResult Info()
