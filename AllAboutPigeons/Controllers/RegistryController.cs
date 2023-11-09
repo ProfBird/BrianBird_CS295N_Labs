@@ -37,6 +37,8 @@ namespace AllAboutPigeons.Controllers
             Random random = new Random();
             model.Rating = random.Next(0, 10);
 
+            // TODO: After we are using Identity, get the logged in user and set them as the From user.
+            // TODO: Get the To user from the database.
             // Save model to db
             context.Messages.Add(model);
             context.SaveChanges();
