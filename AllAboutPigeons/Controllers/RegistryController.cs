@@ -7,23 +7,21 @@ namespace AllAboutPigeons.Controllers
 {
     public class RegistryController : Controller
     {
-        AppDbContext context;
-        public RegistryController(AppDbContext c) {
-            context = c;
+       // AppDbContext context;
+       IRegistryRepository repository;
+        public RegistryController(IRegistryRepository r) {
+            repository = r;
         }
 
         // TODO: Do something interesting with the messageId
         public IActionResult Index(string messageId)
         {
             // Get the last post out of the database
-            var model = context.Messages
-                .Include(m => m.To)
-                .Include(m => m.From)
-                .ToList();
+            var messages = repository.GetMessages();
                // .Where(m => m.MessageId == int.Parse(messageId))
                // .FirstOrDefault();
                // .Find(int.Parse(messageId));
-            return View(model);
+            return View(messages);
         }
 
         public IActionResult ForumPost() 
@@ -40,9 +38,9 @@ namespace AllAboutPigeons.Controllers
             model.Rating = random.Next(0, 10);
 
             // Save model to db
-            context.Messages.Add(model);
-            context.SaveChanges();
-
+            int result;
+            result = repository.StoreMessage(model);
+            // TODO: Do something with the result
             return RedirectToAction("Index", new { model.MessageId });
         }
 

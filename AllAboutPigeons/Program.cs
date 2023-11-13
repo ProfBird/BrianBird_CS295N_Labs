@@ -11,6 +11,8 @@ var connectionString =
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+builder.Services.AddTransient<IRegistryRepository, RegistryRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
