@@ -2,6 +2,7 @@
 using AllAboutPigeons.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace AllAboutPigeons.Controllers
 {
@@ -14,14 +15,24 @@ namespace AllAboutPigeons.Controllers
         }
 
         // TODO: Do something interesting with the messageId
-        public IActionResult Index(string messageId)
+        public IActionResult Index()
         {
             // Get the last post out of the database
-            var messages = repository.GetMessages();
+           var messages = repository.GetMessages();
                // .Where(m => m.MessageId == int.Parse(messageId))
                // .FirstOrDefault();
                // .Find(int.Parse(messageId));
             return View(messages);
+        }
+
+        [HttpPost]
+        public IActionResult Index(string toname)
+        {
+            List<Message> messages = (from m in repository.GetMessages()
+            where m.To.Name == toname
+            select m).ToList();
+
+            return View("Index", messages);
         }
 
         public IActionResult ForumPost() 

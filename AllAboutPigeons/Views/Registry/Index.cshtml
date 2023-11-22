@@ -12,29 +12,18 @@
 <p>
 <a href="ForumPost">Enter a new post</a>
 </p>
-<h2>Forum Post</h2>
+<h2>Filter Forum Posts</h2>
+<form method="post">
+    <label>Sender</label>
+    <input name="toname"/>
+    <input type="submit" />
+</form>
+
+<h2>Forum Posts</h2>
 Members can also offer birds for sale or report missing or found birds.
 @if (@Model != null)
 {
-    @*
-    <table>
-        <tr>
-            <td style="width:5em;">To: </td><td>@Model.To.Name</td>
-        </tr>
-        <tr>
-            <td>From: </td> <td>@Model.From.Name</td>
-        </tr>
-        <tr>
-            <td>Message: </td> <td>@Model.Text</td>
-        </tr>
-        <tr>
-            <td>Date: </td> <td>@Model.Date</td>
-        </tr>
-        <tr>
-        <td>Rating: </td> <td>@Model.Rating</td>
-        </tr>
-    </table>
-    *@
+
     @foreach(var message in Model)
     {
         <p>
