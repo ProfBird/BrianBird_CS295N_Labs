@@ -7,3 +7,4 @@ These are the branches:
 - Lab2: Additional pages have been added. Most of these are place-holders for future development.
 - Lab3: A temporary forum post input form has been added. There isn't a forum yet. The post just gets echoed to the Registery/Index view.
 - Lab4: Added Bootstrap styling to the message entry form.
+- Lab5: Added a quiz and unit tests.
