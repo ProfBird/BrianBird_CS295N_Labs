@@ -20,8 +20,10 @@ namespace PigeonTests
             Assert.NotNull(loadedModel.Questions);
             Assert.NotNull(loadedModel.Answers);
             Assert.NotEmpty(loadedModel.Questions);
-            Assert.NotEmpty(loadedModel.Answers); Assert.Equal(controller.Questions, loadedModel.Questions);
+            Assert.NotEmpty(loadedModel.Answers); 
+            Assert.Equal(controller.Questions, loadedModel.Questions);
             Assert.Equal(controller.Answers, loadedModel.Answers);
+            Assert.Equal(controller.Questions.Count, loadedModel.Questions.Count);
             Assert.Equal(loadedModel.Questions.Count, loadedModel.Answers.Count);
         }
 
@@ -38,7 +40,7 @@ namespace PigeonTests
             loadedModel.UserAnswers[3] = ""; // no answer, false
 
             // Act
-            var result = controller.checkQuizAnswers(model);
+            var result = controller.CheckQuizAnswers(model);
             // Assert
             // user's right answers are shown to be right
             Assert.True(result.Results[1]);
