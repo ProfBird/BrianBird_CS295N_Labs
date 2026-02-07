@@ -5,15 +5,13 @@ namespace AllAboutPigeons.Controllers
 {
     public class QuizController : Controller
     {
-        public Dictionary<int, String> Questions { get; set; }
-        public Dictionary<int, String> Answers { get; set; }
+        public Dictionary<int, string> Questions { get; } = new();
+        public Dictionary<int, string> Answers { get; } = new();
 
         public QuizController()
         {
             // Temporary set of hard-coded questions
             // In the future we'll read these from a file.
-            Questions = new Dictionary<int, String>();
-            Answers = new Dictionary<int, String>();
             Questions[1] = "Are all pigeons homing pigeons? (Yes or No)";
             Answers[1] = "No";
             Questions[2] = "Are all pigeons secretly government spies? (Yes, No, Some)";
@@ -36,7 +34,7 @@ namespace AllAboutPigeons.Controllers
             model.UserAnswers[2] = answer2;
             model.UserAnswers[3] = answer3;
             // Check the user's answers
-            var checkedModel = checkQuizAnswers(model);
+            var checkedModel = CheckQuizAnswers(model);
             return View(checkedModel);
         }
 
@@ -58,9 +56,9 @@ namespace AllAboutPigeons.Controllers
             return model;
         }
 
-        public QuizQuestions checkQuizAnswers(QuizQuestions model) 
+        public QuizQuestions CheckQuizAnswers(QuizQuestions model) 
         { 
-            foreach (var question in Questions) 
+            foreach (var question in model.Questions) 
             {
                 int key = question.Key;
                 model.Results[key] = model.Answers[key] == model.UserAnswers[key];
