@@ -394,5 +394,13 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-# JetBrains Rider
-*.sln.iml
+# JetBrains Rider and ReSharper
+.idea/                 # Exclude all Rider project settings
+!.idea/modules.xml     # Include shared project structure
+!.idea/libraries/      # Include shared library definitions
+!.idea/codeStyles/     # Include shared code style settings
+!.idea/inspectionProfiles/ # Include shared inspection profiles
+!.idea/runConfigurations/  # Include shared run/debug configurations
+!.idea/dictionaries/   # Include shared dictionaries for spelling
+_ReSharper*/           # Exclude ReSharper files
+*.[Rr]e[Ss]harper      # Exclude additional ReSharper artifacts
